@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhmvblpu2ieiw"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_26y30"]
+[ext_resource type="Texture2D" uid="uid://cf2xjcntp40h5" path="res://art/player-walk-1.png" id="2_cnml0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxl78"]
+atlas = ExtResource("2_cnml0")
+region = Rect2(0, 0, 108, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1u3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxl78")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jqn2l"]
+radius = 55.0
+height = 136.0
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_26y30")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x1u3r")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jqn2l")
